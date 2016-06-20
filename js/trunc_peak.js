@@ -18,12 +18,13 @@
 								elText = el.innerHTML;
 
 						el.addEventListener('mouseover', showToolTip, false);
+						el.addEventListener('mouseout', hideToolTip, false);
 					});
 
 					function showToolTip(e) {
 						var el = e.target,
-								pageX = e.pageX,
-								pageY = e.pageY,
+								pageX = e.pageX + 5,
+								pageY = e.pageY + 5,
 								elText = el.innerHTML;
 
 						console.log(e, el.getBoundingClientRect());
@@ -35,6 +36,13 @@
 							truncToolTip.style.left = pageX + 'px';
 						}
 
+					}
+
+					function hideToolTip(e) {
+						truncToolTip.innerHTML = '';
+						truncToolTip.style.display = 'none';
+						truncToolTip.style.top = 0 + 'px';
+						truncToolTip.style.left = 0 + 'px';
 					}
 				});
 			}
