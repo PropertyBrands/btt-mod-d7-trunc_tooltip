@@ -1,5 +1,5 @@
 name = Truncate Peak
-description = Hovertext support for truncated text.
+description = Tooltip support for truncated text.
 core = 7.x
 package = BTM
 version = 7.x-1.0
