@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * @file
+ * Truncate Peak module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function trunc_peak_menu() {
+	$items = array();
+
+	$items['admin/config/user-interface/trunc-peak'] = array(
+		'title' => 'Tuncate Peak',
+		'page callback' => 'drupal_goto',
+		'page arguments' => array('admin/structure/block/manage/trunc_peak/trunc_peak_config/configure'),
+		'access arguments' => array('trunc_peak admin'),
+		'weight' => 999,
+    'type' => MENU_LOCAL_TASK
+	);
+	return $items;
+}
+
+/**
+ * Implements template_preprocess_page
+ */
+function trunc_peak_preprocess_page(&$variables) {
+	$base_path = drupal_get_path('module', 'trunc_peak') . '/js';
+	
+	drupal_add_js(
+		array(
+			'trunc_peak' => array(
+				'selectors' => variable_get('trunc_selectors')
+			)
+		),
+		array('type' => 'setting')
+	);
+	drupal_add_js($base_path . '/trunc_peak.js', array('scope' => 'footer'));
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function trunc_peak_block_info() {
+	$blocks = array();
+	$blocks['trunc_peak_config'] = array(
+		'info' => 'Truncate Peak Configuration',
+		'cache' => DRUPAL_CACHE_GLOBAL
+	);
+	return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function trunc_peak_block_view($delta = '') {
+	$block = array();
+	$base_path = drupal_get_path('module', 'trunc_peak') . '/js';
+
+	switch($delta) {
+		case 'trunc_peak_config':
+	}
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function trunc_peak_block_configure($delta = '') {
+	$form = array();
+
+	if($delta === 'trunc_peak_config') {
+		$form['trunc_selectors'] = array(
+			'#type' => 'textarea',
+			'#title' => 'Field Selectors',
+			'#description' => 'Enter selectors for truncated text field, separated by coma',
+			'#default_value' => variable_get('trunc_selectors', t('.field-name-title a, .rc-core-item-name a'))
+		);
+	}
+	return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function trunc_peak_block_save($delta = '', $edit = array()) {
+	if($delta === 'trunc_peak_config') {
+		variable_set('trunc_selectors', $edit['trunc_selectors']);
+	}
+}
