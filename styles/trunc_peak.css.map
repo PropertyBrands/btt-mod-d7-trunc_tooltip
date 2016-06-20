@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,iBAAkB;EACjB,UAAU,EAAE,KAAK;EACjB,MAAM,EAAE,cAAc;EACtB,OAAO,EAAE,MAAM",
+"mappings": "AAAA,iBAAkB;EACjB,UAAU,EAAE,KAAK;EACjB,MAAM,EAAE,cAAc;EACtB,OAAO,EAAE,MAAM;EACf,UAAU,EAAE,2BAAuB;EACnC,SAAS,EAAE,KAAK",
 "sources": ["trunc_peak.scss"],
 "names": [],
 "file": "trunc_peak.css"

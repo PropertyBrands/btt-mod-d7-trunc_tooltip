@@ -26,8 +26,9 @@ function trunc_peak_menu() {
  * Implements template_preprocess_page
  */
 function trunc_peak_preprocess_page(&$variables) {
-	$base_path = drupal_get_path('module', 'trunc_peak') . '/js';
+	$base_path = drupal_get_path('module', 'trunc_peak');
 	
+	drupal_add_css($base_path . '/styles/trunc_peak.css');
 	drupal_add_js(
 		array(
 			'trunc_peak' => array(
@@ -36,7 +37,7 @@ function trunc_peak_preprocess_page(&$variables) {
 		),
 		array('type' => 'setting')
 	);
-	drupal_add_js($base_path . '/trunc_peak.js', array('scope' => 'footer'));
+	drupal_add_js($base_path . '/js/trunc_peak.js', array('scope' => 'footer'));
 }
 
 /**
@@ -49,18 +50,6 @@ function trunc_peak_block_info() {
 		'cache' => DRUPAL_CACHE_GLOBAL
 	);
 	return $blocks;
-}
-
-/**
- * Implements hook_block_view().
- */
-function trunc_peak_block_view($delta = '') {
-	$block = array();
-	$base_path = drupal_get_path('module', 'trunc_peak') . '/js';
-
-	switch($delta) {
-		case 'trunc_peak_config':
-	}
 }
 
 /**
