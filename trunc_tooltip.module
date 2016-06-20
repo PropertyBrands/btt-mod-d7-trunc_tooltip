@@ -2,20 +2,20 @@
 
 /**
  * @file
- * Truncate Peak module.
+ * Truncate Tooltip module.
  */
 
 /**
  * Implements hook_menu().
  */
-function trunc_peak_menu() {
+function trunc_tooltip_menu() {
 	$items = array();
 
 	$items['admin/config/user-interface/trunc-peak'] = array(
 		'title' => 'Tuncate Peak',
 		'page callback' => 'drupal_goto',
-		'page arguments' => array('admin/structure/block/manage/trunc_peak/trunc_peak_config/configure'),
-		'access arguments' => array('trunc_peak admin'),
+		'page arguments' => array('admin/structure/block/manage/trunc_tooltip/trunc_tooltip_config/configure'),
+		'access arguments' => array('trunc_tooltip admin'),
 		'weight' => 999,
     'type' => MENU_LOCAL_TASK
 	);
@@ -25,27 +25,27 @@ function trunc_peak_menu() {
 /**
  * Implements template_preprocess_page
  */
-function trunc_peak_preprocess_page(&$variables) {
-	$base_path = drupal_get_path('module', 'trunc_peak');
+function trunc_tooltip_preprocess_page(&$variables) {
+	$base_path = drupal_get_path('module', 'trunc_tooltip');
 	
-	drupal_add_css($base_path . '/styles/trunc_peak.css');
+	drupal_add_css($base_path . '/styles/trunc_tooltip.css');
 	drupal_add_js(
 		array(
-			'trunc_peak' => array(
+			'trunc_tooltip' => array(
 				'selectors' => variable_get('trunc_selectors')
 			)
 		),
 		array('type' => 'setting')
 	);
-	drupal_add_js($base_path . '/js/trunc_peak.js', array('scope' => 'footer'));
+	drupal_add_js($base_path . '/js/trunc_tooltip.js', array('scope' => 'footer'));
 }
 
 /**
  * Implements hook_block_info().
  */
-function trunc_peak_block_info() {
+function trunc_tooltip_block_info() {
 	$blocks = array();
-	$blocks['trunc_peak_config'] = array(
+	$blocks['trunc_tooltip_config'] = array(
 		'info' => 'Truncate Peak Configuration',
 		'cache' => DRUPAL_CACHE_GLOBAL
 	);
@@ -55,10 +55,10 @@ function trunc_peak_block_info() {
 /**
  * Implements hook_block_configure().
  */
-function trunc_peak_block_configure($delta = '') {
+function trunc_tooltip_block_configure($delta = '') {
 	$form = array();
 
-	if($delta === 'trunc_peak_config') {
+	if($delta === 'trunc_tooltip_config') {
 		$form['trunc_selectors'] = array(
 			'#type' => 'textarea',
 			'#title' => 'Field Selectors',
@@ -72,13 +72,13 @@ function trunc_peak_block_configure($delta = '') {
 /**
  * Implements hook_block_save().
  */
-function trunc_peak_block_save($delta = '', $edit = array()) {
-	if($delta === 'trunc_peak_config') {
+function trunc_tooltip_block_save($delta = '', $edit = array()) {
+	if($delta === 'trunc_tooltip_config') {
 		variable_set('trunc_selectors', $edit['trunc_selectors']);
 
 		drupal_add_js(
 			array(
-				'trunc_peak' => array(
+				'trunc_tooltip' => array(
 					'selectors' => variable_get('trunc_selectors')
 				)
 			),

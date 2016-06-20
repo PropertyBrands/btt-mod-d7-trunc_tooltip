@@ -1,10 +1,10 @@
 (function ($, Drupal) {
-	Drupal.behaviors.trunc_peak = {
+	Drupal.behaviors.trunc_tooltip = {
 		attach: function(context, settings) {
 			
-			if(Drupal.settings.trunc_peak) {
+			if(Drupal.settings.trunc_tooltip) {
 				$('body', context).once('trunc-peak-processed', function() {
-					var $selectors = $(settings.trunc_peak.selectors),
+					var $selectors = $(settings.trunc_tooltip.selectors),
 							truncToolTip = document.createElement('span'),
 							bodyTag = document.getElementsByTagName('body')[0];
 
