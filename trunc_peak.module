@@ -86,5 +86,14 @@ function trunc_peak_block_configure($delta = '') {
 function trunc_peak_block_save($delta = '', $edit = array()) {
 	if($delta === 'trunc_peak_config') {
 		variable_set('trunc_selectors', $edit['trunc_selectors']);
+
+		drupal_add_js(
+			array(
+				'trunc_peak' => array(
+					'selectors' => variable_get('trunc_selectors')
+				)
+			),
+			array('type' => 'setting')
+		);
 	}
 }
