@@ -1,6 +1,7 @@
 (function ($, Drupal) {
 	Drupal.behaviors.trunc_peak = {
 		attach: function(context, settings) {
+			
 			if(Drupal.settings.trunc_peak) {
 				$('body', context).once('trunc-peak-processed', function() {
 					var $selectors = $(settings.trunc_peak.selectors),
@@ -27,15 +28,12 @@
 								pageY = e.pageY + 5,
 								elText = el.innerHTML;
 
-						console.log(e, el.getBoundingClientRect());
-
 						if(el.scrollWidth > el.clientWidth) {
 							truncToolTip.innerHTML = elText;
 							truncToolTip.style.display = 'inline-block';
 							truncToolTip.style.top = pageY + 'px';
 							truncToolTip.style.left = pageX + 'px';
 						}
-
 					}
 
 					function hideToolTip(e) {
