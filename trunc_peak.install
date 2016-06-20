@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Installation hooks for Truncate Peak.
+ */
+
+/**
+ * Set Defaults
+ */
+function trunc_peak_update_7100() {
+	variable_set('trunc_selectors', t('.field-name-title a, .rc-core-item-name a'));
+}
