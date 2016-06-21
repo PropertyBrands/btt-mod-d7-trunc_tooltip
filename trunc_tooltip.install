@@ -8,6 +8,6 @@
 /**
  * Set Defaults
  */
-function trunc_tooltip_update_7100() {
+function trunc_tooltip_install() {
 	variable_set('trunc_selectors', t('.field-name-title a, .rc-core-item-name a'));
 }
