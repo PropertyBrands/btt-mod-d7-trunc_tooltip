@@ -9,5 +9,5 @@
  * Implements hook_install().
  */
 function trunc_tooltip_install() {
-	variable_set('trunc_selectors', '.field-name-title a, .rc-core-item-name a');
+	
 }
