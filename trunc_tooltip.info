@@ -4,4 +4,4 @@ core = 7.x
 package = BTM
 version = 7.x-1.0
 project = trunc_tooltip
-configure = admin/structure/block/manage/trunc_tooltip/trunc_tooltip_config/configure
+configure = admin/config/user-interface/trunc-tooltip

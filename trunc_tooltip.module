@@ -13,11 +13,12 @@ function trunc_tooltip_menu() {
 
 	$items['admin/config/user-interface/trunc-tooltip'] = array(
 		'title' => 'Tuncate Tooltip',
-		'page callback' => 'drupal_goto',
-		'page arguments' => array('admin/structure/block/manage/trunc_tooltip/trunc_tooltip_config/configure'),
+		'description' => 'Modify selectors used by module',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('trunc_tooltip_admin_settings'),
 		'access arguments' => array('trunc_tooltip admin'),
-		'weight' => 999,
-    'type' => MENU_LOCAL_TASK
+		'file' => 'trunc_tooltip.admin.inc',
+		'type' => MENU_NORMAL_ITEM
 	);
 	return $items;
 }
