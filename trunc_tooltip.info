@@ -1,4 +1,4 @@
-name = Truncate Peak
+name = Truncate Tooltip
 description = Tooltip support for truncated text.
 core = 7.x
 package = BTM

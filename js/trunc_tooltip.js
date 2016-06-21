@@ -3,7 +3,7 @@
 		attach: function(context, settings) {
 			
 			if(Drupal.settings.trunc_tooltip) {
-				$('body', context).once('trunc-peak-processed', function() {
+				$('body', context).once('trunc-tooltip-processed', function() {
 					var $selectors = $(settings.trunc_tooltip.selectors),
 							truncToolTip = document.createElement('span'),
 							bodyTag = document.getElementsByTagName('body')[0];

@@ -11,8 +11,8 @@
 function trunc_tooltip_menu() {
 	$items = array();
 
-	$items['admin/config/user-interface/trunc-peak'] = array(
-		'title' => 'Tuncate Peak',
+	$items['admin/config/user-interface/trunc-tooltip'] = array(
+		'title' => 'Tuncate Tooltip',
 		'page callback' => 'drupal_goto',
 		'page arguments' => array('admin/structure/block/manage/trunc_tooltip/trunc_tooltip_config/configure'),
 		'access arguments' => array('trunc_tooltip admin'),
@@ -46,7 +46,7 @@ function trunc_tooltip_preprocess_page(&$variables) {
 function trunc_tooltip_block_info() {
 	$blocks = array();
 	$blocks['trunc_tooltip_config'] = array(
-		'info' => 'Truncate Peak Configuration',
+		'info' => 'Truncate Tooltip Configuration',
 		'cache' => DRUPAL_CACHE_GLOBAL
 	);
 	return $blocks;
