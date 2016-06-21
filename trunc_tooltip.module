@@ -32,7 +32,7 @@ function trunc_tooltip_preprocess_page(&$variables) {
 	drupal_add_js(
 		array(
 			'trunc_tooltip' => array(
-				'selectors' => variable_get('trunc_selectors')
+				'selectors' => variable_get('trunc_selectors', t('.field-name-title a, .rc-core-item-name a'))
 			)
 		),
 		array('type' => 'setting')
@@ -79,7 +79,7 @@ function trunc_tooltip_block_save($delta = '', $edit = array()) {
 		drupal_add_js(
 			array(
 				'trunc_tooltip' => array(
-					'selectors' => variable_get('trunc_selectors')
+					'selectors' => variable_get('trunc_selectors', t('.field-name-title a, .rc-core-item-name a'))
 				)
 			),
 			array('type' => 'setting')
