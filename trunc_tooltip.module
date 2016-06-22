@@ -24,19 +24,41 @@ function trunc_tooltip_menu() {
 }
 
 /**
- * Implements template_preprocess_page
+ * Implements hook_libraries_info().
  */
-function trunc_tooltip_preprocess_page(&$variables) {
-	$base_path = drupal_get_path('module', 'trunc_tooltip');
-	
-	drupal_add_css($base_path . '/styles/trunc_tooltip.css');
-	drupal_add_js(
-		array(
+function trunc_tooltip_libraries_info() {
+	$libraries = array();
+
+	$libraries['trunc_tooltip_assets'] = array(
+		'name' => 'Truncate Tooltip Assets',
+		'vendor url' => 'http://bluetent.com',
+		'version' => '1.0',
+    'library path' => drupal_get_path('module', 'trunc_tooltip'),
+		'files' => array(
+			'js' => array(
+				'js/trunc_tooltip.js'
+			),
+			'css' => array(
+				'styles/trunc_tooltip.css'
+			)
+		)
+	);
+	return $libraries;
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function trunc_tooltip_page_alter(&$page) {
+
+  libraries_load('trunc_tooltip_assets');
+
+	$page['content']['#attached']['js'][] = array(
+		'type' => 'setting',
+		'data' => array(
 			'trunc_tooltip' => array(
 				'selectors' => variable_get('trunc_selectors', t('.field-name-title a, .rc-core-item-name a'))
 			)
-		),
-		array('type' => 'setting')
+		)
 	);
-	drupal_add_js($base_path . '/js/trunc_tooltip.js', array('scope' => 'footer'));
 }

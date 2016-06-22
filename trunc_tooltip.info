@@ -5,3 +5,5 @@ package = BTM
 version = 7.x-1.0
 project = trunc_tooltip
 configure = admin/config/user-interface/trunc-tooltip
+
+dependencies[] = libraries
