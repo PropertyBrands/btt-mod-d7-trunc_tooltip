@@ -31,6 +31,6 @@ function trunc_tooltip_admin_settings_validate($form, &$form_state) {
 		// Valid selector
 	}else {
 		// Invalid selctor
-	  form_set_error('onthisdate_maxdisp', t('You must enter a valid CSS selector.'));
+	  form_set_error('trunc_selectors', t('You must enter a valid CSS selector.'));
 	}
 }
