@@ -1,11 +1,10 @@
 (function ($, Drupal) {
 	Drupal.behaviors.trunc_tooltip = {
 		attach: function(context, settings) {
-			var _this = this,
-					$selectors = $(settings.trunc_tooltip.selectors);
+			var _this = this;
 
 			if(Drupal.settings.trunc_tooltip) {
-				$selectors.once('truncate-tooltip-processed').each(function(idx, el) {
+				$(settings.trunc_tooltip.selectors).once('truncate-tooltip-processed').each(function(idx, el) {
 					el.addEventListener('mouseover', _this, false);
 					el.addEventListener('mouseout', _this, false);
 				});
