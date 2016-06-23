@@ -38,20 +38,22 @@
 
 			bodyTag = document.getElementsByTagName('body')[0];
 
-			switch(e.type) {
-				case 'mouseover':
-					window.requestAnimationFrame(function() {
-						_this.toolTip.style.top = posY + 'px';
-						_this.toolTip.style.left = posX + 'px';
-						_this.toolTip.innerHTML = text;
-						bodyTag.appendChild(_this.toolTip);
-					});
-					break;
-				case 'mouseout':
-					window.requestAnimationFrame(function() {
-						_this.toolTip.remove();
-					});
-					break
+			if(el.scrollWidth > el.clientWidth) {
+				switch(e.type) {
+					case 'mouseover':
+						window.requestAnimationFrame(function() {
+							_this.toolTip.style.top = posY + 'px';
+							_this.toolTip.style.left = posX + 'px';
+							_this.toolTip.innerHTML = text;
+							bodyTag.appendChild(_this.toolTip);
+						});
+						break;
+					case 'mouseout':
+						window.requestAnimationFrame(function() {
+							_this.toolTip.remove();
+						});
+						break
+				}
 			}
 		},
 	};
