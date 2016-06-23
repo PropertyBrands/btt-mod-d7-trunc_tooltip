@@ -27,8 +27,8 @@
 		handleEvent: function(e) {
 			var el = e.target,
 					text = el.innerHTML,
-					bodyTag = document.getElementsByTagName('body')[0],
-					posX = e.pageX + 5
+					bodyTag,
+					posX = e.pageX + 5,
 					posY = e.pageY + 5,
 					_this = this;
 
@@ -36,6 +36,7 @@
 				_this.toolTip = _this.buildToolTipSpan();
 			}
 
+			bodyTag = document.getElementsByTagName('body')[0];
 			_this.toolTip.style.top = posY + 'px';
 			_this.toolTip.style.left = posX + 'px';
 			_this.toolTip.innerHTML = text;
