@@ -15,11 +15,12 @@
 			var toolTip = document.createElement('span'),
 					_this = this;
 
-			toolTip.style.position = 'absolute';
-			toolTip.style.zIndex = 999;
-			toolTip.style.display = 'inline-block';
-
-			toolTip.className += 'truncate-tooltip';
+			window.requestAnimationFrame(function() {
+				toolTip.style.position = 'absolute';
+				toolTip.style.zIndex = 999;
+				toolTip.style.display = 'inline-block';
+				toolTip.className += 'truncate-tooltip';
+			});
 
 			return toolTip;
 		},
@@ -32,45 +33,26 @@
 					_this = this;
 
 			if(!_this.toolTip) {
-				_this.toolTip = _this.buildToolTipSpan();
+					_this.toolTip = _this.buildToolTipSpan();
 			}
 
 			bodyTag = document.getElementsByTagName('body')[0];
-			_this.toolTip.style.top = posY + 'px';
-			_this.toolTip.style.left = posX + 'px';
-			_this.toolTip.innerHTML = text;
 
-			console.log(this);
-			console.log(e);
-			console.log(_this.toolTip);
 			switch(e.type) {
 				case 'mouseover':
-					bodyTag.appendChild(_this.toolTip);
+					window.requestAnimationFrame(function() {
+						_this.toolTip.style.top = posY + 'px';
+						_this.toolTip.style.left = posX + 'px';
+						_this.toolTip.innerHTML = text;
+						bodyTag.appendChild(_this.toolTip);
+					});
 					break;
 				case 'mouseout':
-					_this.toolTip.remove();
+					window.requestAnimationFrame(function() {
+						_this.toolTip.remove();
+					});
 					break
 			}
-		},
-		showToolTip: function(e) {
-			var el = e.target,
-					pos = {},
-					text = el.innerHTML,
-					_this = this;
-
-			pos.pageX = e.pageX + 5;
-			pos.pageY = e.pageY + 5;
-
-			if(el.scrollWidth > el.clientWidth) {
-				console.log(_this);
-			}
-			return this;
-		},
-		hideToolTip: function(e) {
-
-			console.log(this, _this);
-			return this;
-
 		},
 	};
 })(jQuery, Drupal);
