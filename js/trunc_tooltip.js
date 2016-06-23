@@ -52,7 +52,7 @@
             window.requestAnimationFrame(function() {
               _this.toolTip.remove();
             });
-            break
+            break;
         }
       }
     },
