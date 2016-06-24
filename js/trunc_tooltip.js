@@ -49,6 +49,13 @@
             });
             break;
           case 'mouseout':
+            if(!('remove' in Element.prototype)) {
+              Node.prototype.remove = function() {
+                if(this.parentNode) {
+                  this.parentNode.removeChild(this);
+                }
+              }
+            }
             window.requestAnimationFrame(function() {
               _this.toolTip.remove();
             });
